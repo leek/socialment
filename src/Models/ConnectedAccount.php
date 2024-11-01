@@ -5,6 +5,7 @@ namespace ChrisReedIO\Socialment\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Config;
 
 /**
  * @property string $provider
@@ -31,6 +32,17 @@ class ConnectedAccount extends Model
         'refresh_token',
         'expires_at',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        $config = Config::get('socialment');
+
+        if (isset($config['table_name'])) {
+            $this->setTable($config['table_name']);
+        }
+
+        parent::__construct($attributes);
+    }
 
     public function user(): BelongsTo
     {

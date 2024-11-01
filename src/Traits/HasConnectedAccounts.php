@@ -9,6 +9,6 @@ trait HasConnectedAccounts
 {
     public function connectedAccounts(): HasMany
     {
-        return $this->hasMany(ConnectedAccount::class);
+        return $this->hasMany(config('socialment.models.connected_account', ConnectedAccount::class));
     }
 }
