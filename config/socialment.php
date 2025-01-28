@@ -44,7 +44,7 @@ return [
         'connected_account' => \ChrisReedIO\Socialment\Models\ConnectedAccount::class,
 
         // If you want to use a custom user model, you can specify it here.
-        'user' => \App\Model\User::class,
+        'user' => '\App\Models\User',
     ],
 
     // The table name for the connected_accounts table
